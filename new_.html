@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Images Layout with Fade Effect</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 129%; /* Adjust this value based on your image aspect ratio */
+        }
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        #top-image {
+            z-index: 2;
+            transition: opacity 0.5s ease-in-out;
+            cursor: pointer;
+        }
+        #bottom-image {
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-wrapper">
+            <img id="bottom-image" src="hoaleegrad-02.png" alt="Image 2">
+            <img id="top-image" src="hoaleegrad-01.png" alt="Image 1">
+        </div>
+    </div>
+
+    <script>
+        const topImage = document.getElementById('top-image');
+        let isTopImageVisible = true;
+
+        topImage.addEventListener('click', () => {
+            if (isTopImageVisible) {
+                topImage.style.opacity = '0';
+            } else {
+                topImage.style.opacity = '1';
+            }
+            isTopImageVisible = !isTopImageVisible;
+        });
+    </script>
+</body>
+</html>
